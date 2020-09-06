@@ -10,10 +10,9 @@ main thread, so the CPU load is high. Anti-flickering has not been implemented.
 
 The emulator has only been tested on Linux. It uses C++17 (GCC), Qt 5.15.0 and CMake minimum 3.5.
 
-![Emulator running](/assets/src-running.png)
+![Emulator running](assets/src-running.png?raw=true)
 
-
-![Emulator settings](/assets/src-settings.png)
+![Emulator settings](assets/src-settings.png?raw=true)
 
 ## To build
 
