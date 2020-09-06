@@ -1,0 +1,1434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+   <class>MainWindow</class>
+   <widget class="QMainWindow" name="MainWindow">
+      <property name="geometry">
+         <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1000</width>
+            <height>600</height>
+         </rect>
+      </property>
+      <property name="windowTitle">
+         <string>chip8emu by Mika</string>
+      </property>
+      <widget class="QWidget" name="centralWidget">
+         <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>1</verstretch>
+            </sizepolicy>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+               <layout class="QGridLayout" name="gameLayout">
+                  <item row="0" column="0">
+                     <widget class="GameRenderArea" name="gameRenderArea">
+                        <property name="sizePolicy">
+                           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                           </sizepolicy>
+                        </property>
+                     </widget>
+                  </item>
+                  <item row="1" column="0">
+                     <layout class="QGridLayout" name="buttonLayout" columnstretch="0,0,0,0,1">
+                        <item row="0" column="0">
+                           <widget class="QPushButton" name="oneButton">
+                              <property name="text">
+                                 <string>1</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="0" column="1">
+                           <widget class="QPushButton" name="twoButton">
+                              <property name="text">
+                                 <string>2</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="0" column="2">
+                           <widget class="QPushButton" name="threeButton">
+                              <property name="text">
+                                 <string>3</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="0" column="3">
+                           <widget class="QPushButton" name="cButton">
+                              <property name="text">
+                                 <string>C</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="1" column="0">
+                           <widget class="QPushButton" name="fourButton">
+                              <property name="text">
+                                 <string>4</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="1" column="1">
+                           <widget class="QPushButton" name="fiveButton">
+                              <property name="text">
+                                 <string>5</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="1" column="2">
+                           <widget class="QPushButton" name="sixButton">
+                              <property name="text">
+                                 <string>6</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="1" column="3">
+                           <widget class="QPushButton" name="dButton">
+                              <property name="text">
+                                 <string>D</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="2" column="0">
+                           <widget class="QPushButton" name="sevenButton">
+                              <property name="text">
+                                 <string>7</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="2" column="1">
+                           <widget class="QPushButton" name="eightButton">
+                              <property name="text">
+                                 <string>8</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="2" column="2">
+                           <widget class="QPushButton" name="nineButton">
+                              <property name="text">
+                                 <string>9</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="2" column="3">
+                           <widget class="QPushButton" name="eButton">
+                              <property name="text">
+                                 <string>E</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="4" column="0">
+                           <widget class="QPushButton" name="aButton">
+                              <property name="text">
+                                 <string>A</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="4" column="1">
+                           <widget class="QPushButton" name="zeroButton">
+                              <property name="text">
+                                 <string>0</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="4" column="2">
+                           <widget class="QPushButton" name="bButton">
+                              <property name="text">
+                                 <string>B</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                        <item row="4" column="3">
+                           <widget class="QPushButton" name="fButton">
+                              <property name="text">
+                                 <string>F</string>
+                              </property>
+                              <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                 </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                              <property name="maximumSize">
+                                 <size>
+                                    <width>50</width>
+                                    <height>50</height>
+                                 </size>
+                              </property>
+                           </widget>
+                        </item>
+                     </layout>
+                  </item>
+               </layout>
+            </item>
+            <item row="0" column="1">
+               <widget class="QWidget" name="debugwrapperWidget">
+                  <layout class="QHBoxLayout" name="debugLayout" stretch="1,1,3">
+                     <item>
+                        <layout class="QFormLayout" name="debugRegistersLayout">
+                           <item row="0" column="0">
+                              <widget class="QPushButton" name="nextInstrButton">
+                                 <property name="text">
+                                    <string>Next instr.</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="0" column="1">
+                              <widget class="QLineEdit" name="OpcodeLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="1" column="0">
+                              <widget class="QLabel" name="PCLabel">
+                                 <property name="text">
+                                    <string>PC</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="1" column="1">
+                              <widget class="QLineEdit" name="PCLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="2" column="0">
+                              <widget class="QLabel" name="ILabel">
+                                 <property name="text">
+                                    <string>I</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="2" column="1">
+                              <widget class="QLineEdit" name="ILineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="3" column="0">
+                              <widget class="QLabel" name="V0Label">
+                                 <property name="text">
+                                    <string>V0</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="3" column="1">
+                              <widget class="QLineEdit" name="V0LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="4" column="0">
+                              <widget class="QLabel" name="V1Label">
+                                 <property name="text">
+                                    <string>V1</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="4" column="1">
+                              <widget class="QLineEdit" name="V1LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="5" column="0">
+                              <widget class="QLabel" name="V2Label">
+                                 <property name="text">
+                                    <string>V2</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="5" column="1">
+                              <widget class="QLineEdit" name="V2LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="6" column="0">
+                              <widget class="QLabel" name="V3Label">
+                                 <property name="text">
+                                    <string>V3</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="6" column="1">
+                              <widget class="QLineEdit" name="V3LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="7" column="0">
+                              <widget class="QLabel" name="V4Label">
+                                 <property name="text">
+                                    <string>V4</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="7" column="1">
+                              <widget class="QLineEdit" name="V4LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="8" column="0">
+                              <widget class="QLabel" name="V5Label">
+                                 <property name="text">
+                                    <string>V5</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="8" column="1">
+                              <widget class="QLineEdit" name="V5LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="9" column="0">
+                              <widget class="QLabel" name="V6Label">
+                                 <property name="text">
+                                    <string>V6</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="9" column="1">
+                              <widget class="QLineEdit" name="V6LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="10" column="0">
+                              <widget class="QLabel" name="V7Label">
+                                 <property name="text">
+                                    <string>V7</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="10" column="1">
+                              <widget class="QLineEdit" name="V7LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="11" column="0">
+                              <widget class="QLabel" name="V8Label">
+                                 <property name="text">
+                                    <string>V8</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="11" column="1">
+                              <widget class="QLineEdit" name="V8LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="12" column="0">
+                              <widget class="QLabel" name="V9Label">
+                                 <property name="text">
+                                    <string>V9</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="12" column="1">
+                              <widget class="QLineEdit" name="V9LineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="13" column="0">
+                              <widget class="QLabel" name="VALabel">
+                                 <property name="text">
+                                    <string>VA</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="13" column="1">
+                              <widget class="QLineEdit" name="VALineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="14" column="0">
+                              <widget class="QLabel" name="VBLabel">
+                                 <property name="text">
+                                    <string>VB</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="14" column="1">
+                              <widget class="QLineEdit" name="VBLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="15" column="0">
+                              <widget class="QLabel" name="VCLabel">
+                                 <property name="text">
+                                    <string>VC</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="15" column="1">
+                              <widget class="QLineEdit" name="VCLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="16" column="0">
+                              <widget class="QLabel" name="VDLabel">
+                                 <property name="text">
+                                    <string>VD</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="16" column="1">
+                              <widget class="QLineEdit" name="VDLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="17" column="0">
+                              <widget class="QLabel" name="VELabel">
+                                 <property name="text">
+                                    <string>VE</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="17" column="1">
+                              <widget class="QLineEdit" name="VELineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="18" column="0">
+                              <widget class="QLabel" name="VFLabel">
+                                 <property name="text">
+                                    <string>VF</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="18" column="1">
+                              <widget class="QLineEdit" name="VFLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="19" column="0">
+                              <widget class="QLabel" name="OpcodeFreqAvgLabel">
+                                 <property name="text">
+                                    <string>Main freq. (avg)</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="19" column="1">
+                              <widget class="QLineEdit" name="OpcodeFreqAvgLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="20" column="0">
+                              <widget class="QLabel" name="DrawFreqAvgLabel">
+                                 <property name="text">
+                                    <string>Draw freq. (avg)</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item row="20" column="1">
+                              <widget class="QLineEdit" name="DrawFreqAvgLineEdit">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>30</height>
+                                    </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                    <size>
+                                       <width>100</width>
+                                       <height>50</height>
+                                    </size>
+                                 </property>
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                        </layout>
+                     </item>
+                     <item>
+                        <layout class="QVBoxLayout" name="DebugKeysAndStackLayout">
+                           <item>
+                              <widget class="QLabel" name="KeysLabel">
+                                 <property name="text">
+                                    <string>Keys:</string>
+                                 </property>
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item>
+                              <layout class="QGridLayout" name="keyInfoLayout">
+                                 <item row="0" column="0">
+                                    <widget class="QLineEdit" name="key1LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="0" column="1">
+                                    <widget class="QLineEdit" name="key2LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="0" column="2">
+                                    <widget class="QLineEdit" name="key3LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="0" column="3">
+                                    <widget class="QLineEdit" name="keyCLineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="1" column="0">
+                                    <widget class="QLineEdit" name="key4LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="1" column="1">
+                                    <widget class="QLineEdit" name="key5LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="1" column="2">
+                                    <widget class="QLineEdit" name="key6LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="1" column="3">
+                                    <widget class="QLineEdit" name="keyDLineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="2" column="0">
+                                    <widget class="QLineEdit" name="key7LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="2" column="1">
+                                    <widget class="QLineEdit" name="key8LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="2" column="2">
+                                    <widget class="QLineEdit" name="key9LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="2" column="3">
+                                    <widget class="QLineEdit" name="keyELineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="3" column="0">
+                                    <widget class="QLineEdit" name="keyALineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="3" column="1">
+                                    <widget class="QLineEdit" name="key0LineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="3" column="2">
+                                    <widget class="QLineEdit" name="keyBLineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item row="3" column="3">
+                                    <widget class="QLineEdit" name="keyFLineEdit">
+                                       <property name="readOnly">
+                                          <bool>true</bool>
+                                       </property>
+                                    </widget>
+                                 </item>
+                              </layout>
+                           </item>
+                           <item>
+                              <widget class="QLabel" name="StackLabel">
+                                 <property name="text">
+                                    <string>Stack:</string>
+                                 </property>
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item>
+                              <widget class="QLineEdit" name="StackLineEdit">
+                                 <property name="readOnly">
+                                    <bool>true</bool>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item>
+                              <layout class="QHBoxLayout" name="delayTimerLayout">
+                                 <item>
+                                    <widget class="QLabel" name="delayTimerLabel">
+                                       <property name="text">
+                                          <string>DT:</string>
+                                       </property>
+                                       <property name="sizePolicy">
+                                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                             <horstretch>0</horstretch>
+                                             <verstretch>0</verstretch>
+                                          </sizepolicy>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item>
+                                    <widget class="QProgressBar" name="delayTimerProgressBar" />
+                                 </item>
+                              </layout>
+                           </item>
+                           <item>
+                              <layout class="QHBoxLayout" name="soundTimerLayout">
+                                 <item>
+                                    <widget class="QLabel" name="soundTimerLabel">
+                                       <property name="text">
+                                          <string>ST:</string>
+                                       </property>
+                                       <property name="sizePolicy">
+                                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                             <horstretch>0</horstretch>
+                                             <verstretch>0</verstretch>
+                                          </sizepolicy>
+                                       </property>
+                                    </widget>
+                                 </item>
+                                 <item>
+                                    <widget class="QProgressBar" name="soundTimerProgressBar" />
+                                 </item>
+                              </layout>
+                           </item>
+                           <item>
+                              <widget class="QWidget" name="Placeholder1">
+                                 <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                       <horstretch>1</horstretch>
+                                       <verstretch>1</verstretch>
+                                    </sizepolicy>
+                                 </property>
+                              </widget>
+                           </item>
+                        </layout>
+                     </item>
+                     <item>
+                        <layout class="QVBoxLayout" name="debugLogLayout">
+                           <item>
+                              <widget class="QLabel" name="logLabel">
+                                 <property name="text">
+                                    <string>Log:</string>
+                                 </property>
+                              </widget>
+                           </item>
+                           <item>
+                              <widget class="QPlainTextEdit" name="logPlainTextEdit" />
+                           </item>
+                        </layout>
+                     </item>
+                  </layout>
+               </widget>
+            </item>
+         </layout>
+      </widget>
+      <widget class="QMenuBar" name="menubar">
+         <property name="geometry">
+            <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>800</width>
+               <height>30</height>
+            </rect>
+         </property>
+         <widget class="QMenu" name="mainMenu">
+            <property name="title">
+               <string>Menu</string>
+            </property>
+            <addaction name="actionOpenFile" />
+            <addaction name="actionOrdinarySettings" />
+         </widget>
+         <addaction name="mainMenu" />
+      </widget>
+      <action name="actionOpenFile">
+         <property name="icon">
+            <iconset>
+               <normaloff>:/images/bold.png</normaloff>
+               :/images/bold.png
+            </iconset>
+         </property>
+         <property name="text">
+            <string>Open file...</string>
+         </property>
+         <property name="toolTip">
+            <string>Open file</string>
+         </property>
+         <property name="shortcut">
+            <string>Ctrl+O</string>
+         </property>
+      </action>
+      <action name="actionOrdinarySettings">
+         <property name="icon">
+            <iconset>
+               <normaloff>:/images/bold.png</normaloff>
+               :/images/bold.png
+            </iconset>
+         </property>
+         <property name="text">
+            <string>Settings...</string>
+         </property>
+         <property name="toolTip">
+            <string>Open the settings dialog</string>
+         </property>
+         <property name="shortcut">
+            <string>Ctrl+S</string>
+         </property>
+      </action>
+      <widget class="QStatusBar" name="statusbar">
+         <widget class="QLabel" name="statusLabel" />
+      </widget>
+      <widget class="QToolBar" name="toolBar">
+         <property name="windowTitle">
+            <string>toolBar</string>
+         </property>
+         <attribute name="toolBarArea">
+            <enum>TopToolBarArea</enum>
+         </attribute>
+         <attribute name="toolBarBreak">
+            <bool>false</bool>
+         </attribute>
+         <widget class="QPushButton" name="startStopButton">
+            <property name="text">
+               <string>Start</string>
+            </property>
+         </widget>
+         <widget class="QPushButton" name="pauseButton">
+            <property name="text">
+               <string>Pause</string>
+            </property>
+         </widget>
+         <widget class="QPushButton" name="openCloseDebugButton">
+            <property name="text">
+               <string>Debug</string>
+            </property>
+         </widget>
+      </widget>
+   </widget>
+   <customwidgets>
+      <customwidget>
+         <class>GameRenderArea</class>
+         <extends>QWidget</extends>
+         <header>gamerenderarea.h</header>
+      </customwidget>
+   </customwidgets>
+   <resources />
+   <connections />
+</ui>

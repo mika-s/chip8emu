@@ -1,0 +1,36 @@
+{
+    "isIncrementingIinFX55andFX65": false,
+    "isVFaffectedInFX1E": false,
+    "frequency": 60,
+    "instructionsPerFrequencyTick": 9,
+    "offColor": {
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "alpha": 255
+    },
+    "onColor": {
+        "red": 255,
+        "green": 255,
+        "blue": 255,
+        "alpha": 255
+    },
+    "defaultSettings": {
+        "isIncrementingIinFX55andFX65": false,
+        "isVFaffectedInFX1E": false,
+        "frequency": 60,
+        "instructionsPerFrequencyTick": 9,
+        "offColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 255
+        },
+        "onColor": {
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "alpha": 255
+        }
+    }
+}

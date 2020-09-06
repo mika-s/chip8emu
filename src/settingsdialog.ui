@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>SettingsDialog</class>
+  <widget class="QDialog" name="SettingsDialog">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>400</width>
+        <height>300</height>
+      </rect>
+    </property>
+    <property name="windowTitle">
+      <string>Settings</string>
+    </property>
+    <layout class="QFormLayout" name="gridLayout">
+      <item row="0" column="0">
+        <widget class="QLabel" name="frequencyLabel">
+          <property name="text">
+            <string>Frequency</string>
+          </property>
+        </widget>
+      </item>
+      <item row="0" column="1">
+        <widget class="QLineEdit" name="frequencyInput">
+        </widget>
+      </item>
+      <item row="1" column="0">
+        <widget class="QLabel" name="instructionsPerFrequencyTickLabel">
+          <property name="text">
+            <string>Instructions per frequency tick</string>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="1">
+        <widget class="QLineEdit" name="instructionsPerFrequencyTickInput">
+        </widget>
+      </item>
+      <item row="2" column="0">
+        <widget class="QLabel" name="calculatedFrequencyLabel">
+          <property name="text">
+            <string>Calculated frequency</string>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="1">
+        <widget class="QLineEdit" name="calculatedFrequencyInput">
+          <property name="readOnly">
+            <bool>true</bool>
+           </property>
+        </widget>
+      </item>
+      <item row="3" column="0">
+        <widget class="QLabel" name="isIncrementingIinFX55andFX65Label">
+          <property name="text">
+            <string>Increment I in FX55 and FX65</string>
+          </property>
+        </widget>
+      </item>
+      <item row="3" column="1">
+        <widget class="QCheckBox" name="isIncrementingIinFX55andFX65CheckBox"/>
+      </item>
+      <item row="4" column="0">
+        <widget class="QLabel" name="isVFaffectedInFX1ELabel">
+          <property name="text">
+            <string>Is VF affected in FX1E</string>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="1">
+        <widget class="QCheckBox" name="isVFaffectedInFX1ECheckBox"/>
+      </item>
+      <item row="5" column="0">
+        <widget class="QLabel" name="offColorLabel">
+          <property name="text">
+            <string>Off color</string>
+          </property>
+        </widget>
+      </item>
+      <item row="5" column="1">
+        <widget class="QPushButton" name="offColorButton">
+          <property name="text">
+            <string>Change</string>
+          </property>
+        </widget>
+      </item>
+      <item row="6" column="0">
+        <widget class="QLabel" name="onColorLabel">
+          <property name="text">
+            <string>On color</string>
+          </property>
+        </widget>
+      </item>
+      <item row="6" column="1">
+        <widget class="QPushButton" name="onColorButton">
+          <property name="text">
+            <string>Change</string>
+          </property>
+        </widget>
+      </item>
+      <item row="7" column="0">
+        <widget class="QDialogButtonBox" name="okCancelButton">
+          <property name="standardButtons">
+            <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+        </widget>
+      </item>
+      <item row="7" column="1">
+        <widget class="QPushButton" name="restoreDefaultValuesButton">
+            <property name="text">
+              <string>Restore default values</string>
+            </property>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <resources/>
+  <connections/>
+</ui>
