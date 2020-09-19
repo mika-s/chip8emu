@@ -9,15 +9,16 @@ class InstructionTest : public QObject {
     Q_OBJECT
 
 private:
-    bool myCondition();
-
-    std::unique_ptr<Emu::Emulator> emulator;
+    std::shared_ptr<Emu::ITimer> timer;
+    Emu::EmulatorSettings settings;
 
 private slots:
     void initTestCase();
-    void myFirstTest();
-    void mySecondTest();
-    void cleanupTestCase();
+    void given_00E0_clearDisplay();
+    void given_1NNN_setPCtoNNN();
+    void given_2NNN_callSubroutineAtNNN();
+    void given_3XNN_andVXisNNgotoNextPC();
+    void given_3XNN_andVXisNotNNdoNotgotoNextPC();
 };
 
 #endif // INSTRUCTIONTEST_H

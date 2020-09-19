@@ -13,25 +13,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Widgets Multimedia REQUIRED)
 
-add_executable(emulator
-  main.cpp
-  mainwindow.cpp mainwindow.h mainwindow.ui
-  emulator.cpp emulator.h emulatorstatus.h
-  emulatorfileloader.cpp emulatorfileloader.h
-  emulatortimer.cpp emulatortimer.h
-  emulatorsettings.cpp emulatorsettings.h
-  emulatorsettingsfilemanager.cpp emulatorsettingsfilemanager.h
-  gamerenderarea.cpp gamerenderarea.h
-  idebuglistener.h ierrorlistener.h iiolistener.h itimerlistener.h itimer.h
-  invalidkeyexception.cpp invalidkeyexception.h
-  filetoolargeexception.cpp filetoolargeexception.h
-  pcoutofboundsexception.cpp pcoutofboundsexception.h
-  unrecognizedopcodeexception.cpp unrecognizedopcodeexception.h
-  settingsdialog.cpp settingsdialog.h settingsdialog.ui
-  util.cpp util.h
-)
+file(GLOB SOURCES_CPP "*.cpp")
+file(GLOB SOURCES_H "*.h")
 
-target_link_libraries(emulator PRIVATE Qt5::Widgets Qt5::Multimedia)
+add_executable(${PROJECT_NAME} ${SOURCES_CPP} ${SOURCES_H})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets Qt5::Multimedia)
 
 configure_file(settings.json settings.json COPYONLY)
 configure_file(bell.wav bell.wav COPYONLY)

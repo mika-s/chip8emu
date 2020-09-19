@@ -29,14 +29,12 @@ add_library(emulatorlib
     ${chip8emu_SOURCE_DIR}/src/util.cpp                        ${chip8emu_SOURCE_DIR}/src/util.h
 )
 
-add_executable(emulatortest
-    main.cpp
-    instructionstest.cpp instructionstest.h
-    observertest.cpp observertest.h
-    listenermock.cpp listenermock.h
-)
+file(GLOB SOURCES_CPP "*.cpp")
+file(GLOB SOURCES_H "*.h")
+
+add_executable(${PROJECT_NAME} ${SOURCES_CPP} ${SOURCES_H})
 
 include_directories (${chip8emu_SOURCE_DIR}/src)
 
 target_link_libraries(emulatorlib PRIVATE Qt5::Widgets Qt5::Multimedia)
-target_link_libraries(emulatortest PRIVATE Qt5::Test emulatorlib)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Test emulatorlib)
