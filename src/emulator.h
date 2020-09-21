@@ -35,32 +35,30 @@ enum Constants {
 class Emulator : public ITimerListener
 {
 public:
-    Emulator(std::shared_ptr<ITimer> timer, EmulatorSettings settings);
-    ~Emulator();
+    Emulator(const std::shared_ptr<ITimer>& timer, EmulatorSettings settings);
+    ~Emulator() override;
 
-    void loadFile(std::vector<std::uint8_t> loadedFile) noexcept;
+    void loadFile(const std::vector<std::uint8_t>& loadedFile) noexcept;
     void start();
     void stop();
     void pause();
     void keyPress(int keyNumber);
     void keyRelease(int keyNumber);
-    void tick();
+    void tick() override;
     void nextInstruction();
 
-    EmulatorStatus status() const;
-    EmulatorSettings settings() const;
-    std::uint8_t displayRows() const;
-    std::uint8_t displayCols() const;
-    std::uint16_t opcode() const;
-    std::vector<std::uint8_t> VRegisters() const;
-    std::stack<std::uint16_t> stack() const;
-    std::uint16_t IRegister() const;
-    std::uint16_t PC() const;
-    std::uint8_t delayTimer() const;
-    std::uint8_t soundTimer() const;
-    std::vector<bool> key() const;
-    std::string latestError() const;
-    std::vector<std::vector<bool>> display() const;
+    [[nodiscard]] EmulatorStatus status() const;
+    [[nodiscard]] EmulatorSettings settings() const;
+    [[nodiscard]] std::uint16_t opcode() const;
+    [[nodiscard]] std::vector<std::uint8_t> VRegisters() const;
+    [[nodiscard]] std::stack<std::uint16_t> stack() const;
+    [[nodiscard]] std::uint16_t IRegister() const;
+    [[nodiscard]] std::uint16_t PC() const;
+    [[nodiscard]] std::uint8_t delayTimer() const;
+    [[nodiscard]] std::uint8_t soundTimer() const;
+    [[nodiscard]] std::vector<bool> key() const;
+    [[nodiscard]] std::string latestError() const;
+    [[nodiscard]] std::vector<std::vector<bool>> display() const;
     void emulatorSettings(EmulatorSettings newSettings);
 
     void addDebugListener(IDebugListener& listener);
@@ -115,7 +113,7 @@ private:
 
     void handleTimers();
     void draw(std::uint8_t X, std::uint8_t Y, std::uint8_t N);
-    void init(std::vector<std::uint8_t> loadedFile);
+    void init(const std::vector<std::uint8_t>& loadedFile);
 
     void latestError(std::string latestError);
     void status(EmulatorStatus status);
@@ -130,7 +128,6 @@ private:
     void decrementDelayTimer();
     void decrementSoundTimer();
 
-    void keyPause();
     void resetPC();
     void gotoPreviousPC();
     void gotoNextPC();
@@ -141,7 +138,7 @@ private:
     void clearRegisters();
     void clearKeys();
     void loadFontsetIntoMemory();
-    void loadFileIntoMemory(std::vector<std::uint8_t> loadedFile);
+    void loadFileIntoMemory(const std::vector<std::uint8_t>& loadedFile);
 
     void notifyDebugListenersAboutOpcode();
     void notifyDebugListenersAboutVregisters();

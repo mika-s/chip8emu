@@ -11,8 +11,8 @@ namespace Emu {
 class UnrecognizedOpcodeException : public std::runtime_error
 {
 public:
-    UnrecognizedOpcodeException(std::uint16_t opcode);
-    const char* what() const noexcept;
+    explicit UnrecognizedOpcodeException(std::uint16_t opcode);
+    [[nodiscard]] const char* what() const noexcept override;
 
 private:
     void makeMessage(std::uint16_t opcode);

@@ -10,13 +10,13 @@ namespace Emu {
 class EmulatorFileLoader
 {
 public:
-    EmulatorFileLoader(std::string filename);
+    explicit EmulatorFileLoader(const std::string& filename);
     std::vector<uint8_t> getLoadedFile();
 
 private:
     std::vector<std::uint8_t> loadedFile;
 
-    void readFile(std::string filename);
+    void readFile(const std::string& filename);
 };
 
 }

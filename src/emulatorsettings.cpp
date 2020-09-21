@@ -3,8 +3,6 @@
 
 namespace Emu {
 
-EmulatorSettings::EmulatorSettings() {}
-
 EmulatorSettings::EmulatorSettings(  bool isIncrementingIinFX55andFX65
                                    , bool defaultIsIncrementingIinFX55andFX65
                                    , bool isVFaffectedInFX1E

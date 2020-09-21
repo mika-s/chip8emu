@@ -1,4 +1,6 @@
 #include "gamerenderarea.h"
+
+#include <utility>
 #include "emulator.h"
 
 
@@ -9,7 +11,7 @@ GameRenderArea::GameRenderArea(QWidget *parent)
     , pixelSize_(10) { }
 
 void GameRenderArea::paintEvent(QPaintEvent *) {
-    if (display_.size() > 0) {
+    if (!display_.empty()) {
         QPainter painter(this);
 
         const size_t rows = display_.size();
@@ -38,17 +40,13 @@ QSize GameRenderArea::sizeHint() const {
 }
 
 void GameRenderArea::display(std::vector<std::vector<bool>> display) {
-    this->display_ = display;
-}
-
-void GameRenderArea::pixelSize(int pixelSize) {
-    this->pixelSize_ = pixelSize;
+    this->display_ = std::move(display);
 }
 
 void GameRenderArea::offColor(QColor offColor) {
-    this->offColor_ = offColor;
+    this->offColor_ = std::move(offColor);
 }
 
 void GameRenderArea::onColor(QColor onColor) {
-    this->onColor_ = onColor;
+    this->onColor_ = std::move(onColor);
 }

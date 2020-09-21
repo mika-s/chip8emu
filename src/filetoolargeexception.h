@@ -12,7 +12,7 @@ class FileTooLargeException : public std::runtime_error
 {
 public:
     FileTooLargeException(size_t fileSize, size_t maxSize);
-    const char* what() const noexcept;
+    [[nodiscard]] const char* what() const noexcept override;
 
 private:
     void makeMessage(size_t fileSize, size_t maxSize);

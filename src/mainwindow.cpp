@@ -7,12 +7,8 @@
 #include <QTimer>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "emulator.h"
 #include "emulatorfileloader.h"
 #include "emulatortimer.h"
-#include "emulatorsettingsfilemanager.h"
-#include "emulatorsettings.h"
-#include "settingsdialog.h"
 #include "util.h"
 
 

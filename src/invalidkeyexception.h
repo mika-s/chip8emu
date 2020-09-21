@@ -12,7 +12,7 @@ class InvalidKeyException : public std::runtime_error
 {
 public:
     InvalidKeyException(int keyNumber, int max);
-    const char* what() const noexcept;
+    [[nodiscard]] const char* what() const noexcept override;
 
 private:
     void makeMessage(int keyNumber, int max);

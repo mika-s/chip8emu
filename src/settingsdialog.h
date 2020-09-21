@@ -10,9 +10,9 @@ class SettingsDialog : public QDialog, private Ui::SettingsDialog {
     Q_OBJECT
 
 public:
-    SettingsDialog(Emu::EmulatorSettings oldSettings, QWidget *parent = nullptr);
+    explicit SettingsDialog(Emu::EmulatorSettings oldSettings, QWidget *parent = nullptr);
 
-    Emu::EmulatorSettings getNewEmulatorSettings() const;
+    [[nodiscard]] Emu::EmulatorSettings getNewEmulatorSettings() const;
 
 private slots:
     void updateCalculatedFrequency();

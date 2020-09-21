@@ -5,9 +5,9 @@
 
 int main(int argc, char *argv[])
 {
-    int status = 0;
-    status |= QTest::qExec(new InstructionTest, argc, argv);
-    status |= QTest::qExec(new ObserverTest, argc, argv);
+    unsigned int status = 0;
+    status |= (unsigned int)QTest::qExec(new InstructionTest, argc, argv);
+    status |= (unsigned int)QTest::qExec(new ObserverTest, argc, argv);
 
-    return status;
+    return (int)status;
 }

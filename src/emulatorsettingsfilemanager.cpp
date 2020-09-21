@@ -1,4 +1,3 @@
-#include <exception>
 #include <stdexcept>
 #include <QFile>
 #include <QJsonDocument>
@@ -8,7 +7,7 @@
 
 namespace Emu {
 
-static int getIntFromJson(const QJsonObject json, QString field) {
+static int getIntFromJson(const QJsonObject& json, const QString& field) {
     int result;
 
     if (json.contains(field) && json[field].isDouble())
@@ -19,7 +18,7 @@ static int getIntFromJson(const QJsonObject json, QString field) {
     return result;
 }
 
-static bool getBoolFromJson(const QJsonObject json, QString field) {
+static bool getBoolFromJson(const QJsonObject& json, const QString& field) {
     bool result;
 
     if (json.contains(field) && json[field].isBool())
@@ -30,7 +29,7 @@ static bool getBoolFromJson(const QJsonObject json, QString field) {
     return result;
 }
 
-EmulatorSettingsFileManager::EmulatorSettingsFileManager(const QString filename) {
+EmulatorSettingsFileManager::EmulatorSettingsFileManager(const QString& filename) {
     this->filename = filename;
 }
 
@@ -164,7 +163,7 @@ QJsonObject EmulatorSettingsFileManager::readJson() {
     return val;
 }
 
-void EmulatorSettingsFileManager::writeJson(QJsonObject json) {
+void EmulatorSettingsFileManager::writeJson(const QJsonObject& json) {
     QJsonDocument settingsDoc(json);
     QString result(settingsDoc.toJson(QJsonDocument::Indented));
 

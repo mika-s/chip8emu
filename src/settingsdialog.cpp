@@ -8,6 +8,7 @@
 SettingsDialog::SettingsDialog(Emu::EmulatorSettings oldSettings, QWidget *parent)
     : QDialog(parent)
     , oldSettings(oldSettings)
+    , newSettings(Emu::EmulatorSettings())
     , selectedOffColor(QColor(oldSettings.offColor.r
                               , oldSettings.offColor.g
                               , oldSettings.offColor.b

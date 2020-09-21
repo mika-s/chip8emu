@@ -1,16 +1,15 @@
 #include <QFile>
-#include <vector>
 #include "emulatorfileloader.h"
 
 
 namespace Emu {
 
-EmulatorFileLoader::EmulatorFileLoader(std::string filename) {
+EmulatorFileLoader::EmulatorFileLoader(const std::string& filename) {
     readFile(filename);
 }
 
-void EmulatorFileLoader::readFile(std::string filename) {
-    QFile file(QString::fromStdString(filename.c_str()));
+void EmulatorFileLoader::readFile(const std::string& filename) {
+    QFile file(QString::fromStdString(filename));
 
     if (!file.open(QIODevice::ReadOnly))
         return;

@@ -10,13 +10,12 @@ class GameRenderArea : public QWidget {
 
 protected:
     void paintEvent(QPaintEvent *event) override;
-    QSize sizeHint() const override;
+    [[nodiscard]] QSize sizeHint() const override;
 
 public:
-    GameRenderArea(QWidget *parent = nullptr);
+    explicit GameRenderArea(QWidget *parent = nullptr);
 
     void display(std::vector<std::vector<bool>> display);
-    void pixelSize(int pixelSize);
     void offColor(QColor offColor);
     void onColor(QColor onColor);
 

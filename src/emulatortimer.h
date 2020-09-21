@@ -11,14 +11,14 @@ class EmulatorTimer : public QTimer, public ITimer
 {
 public:
     EmulatorTimer();
-    EmulatorTimer(QObject *parent = nullptr);
+    explicit EmulatorTimer(QObject *parent = nullptr);
 
-    void start(int frequency);
-    void stop();
-    void notifyOfTick();
-    void changeFrequency(int frequency);
-    void addTimerListener(ITimerListener& listener);
-    void removeTimerListener(ITimerListener& listener);
+    void start(int frequency) override;
+    void stop() override;
+    void notifyOfTick() override;
+    void changeFrequency(int frequency) override;
+    void addTimerListener(ITimerListener& listener) override;
+    void removeTimerListener(ITimerListener& listener) override;
 
 private:
     std::vector<ITimerListener*> timerListeners;

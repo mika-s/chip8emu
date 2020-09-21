@@ -7,12 +7,12 @@ namespace Emu {
 struct Color {
     int r, g, b, a;
 
-    Color() { }
+    Color() = default;
     Color(int r, int g, int b, int a) : r(r), g(g), b(b), a(a) { }
 };
 
 struct EmulatorSettings {
-    EmulatorSettings();
+    EmulatorSettings() = default;
 
     EmulatorSettings(  bool isIncrementingIinFX55andFX65
                      , bool defaultIsIncrementingIinFX55andFX65

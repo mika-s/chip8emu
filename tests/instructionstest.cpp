@@ -1,7 +1,5 @@
 #include "instructionstest.h"
-#include "emulatorsettings.h"
 #include "emulatortimer.h"
-#include "itimer.h"
 
 
 void InstructionTest::initTestCase() {
@@ -19,9 +17,9 @@ void InstructionTest::given_00E0_clearDisplay() {
 
     std::vector<std::vector<bool>> display = emulator.display();
 
-    for (size_t rowIdx = 0; rowIdx < display.size(); ++rowIdx)
-        for (size_t colIdx = 0; colIdx < display.at(rowIdx).size(); ++colIdx)
-            QCOMPARE(display.at(rowIdx).at(colIdx), false);
+    for (auto & rowIdx : display)
+        for (const auto & colIdx : rowIdx)
+            QCOMPARE(colIdx, false);
 }
 
 void InstructionTest::given_1NNN_setPCtoNNN() {
@@ -46,7 +44,7 @@ void InstructionTest::given_3XNN_andVXisNNgotoNextPC() {
     Emu::Emulator emulator = Emu::Emulator(timer, settings);
     emulator.loadFile({
                           0x62, 0x55,           // V[2] = 0x55
-                          0x32, 0x55            // if(V[3] == 0x55) --> gotoNextPC()
+                          0x32, 0x55            // if(V[2] == 0x55) --> gotoNextPC()
                       });
 
     emulator.nextInstruction();
@@ -60,7 +58,7 @@ void InstructionTest::given_3XNN_andVXisNotNNdoNotgotoNextPC() {
     Emu::Emulator emulator = Emu::Emulator(timer, settings);
     emulator.loadFile({
                           0x62, 0x55,           // V[2] = 0x55
-                          0x32, 0x56            // if(V[3] == 0x56) --> gotoNextPC()
+                          0x32, 0x56            // if(V[2] == 0x56) --> gotoNextPC()
                       });
 
     emulator.nextInstruction();

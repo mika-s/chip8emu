@@ -1,9 +1,5 @@
 #include <algorithm>
-#include <climits>
-#include <cstdlib>
 #include <cstring>
-#include <sstream>
-#include <stdexcept>
 #include <thread>
 #include "emulator.h"
 #include "filetoolargeexception.h"
@@ -14,7 +10,7 @@
 
 namespace Emu {
 
-Emulator::Emulator(std::shared_ptr<ITimer> timer, EmulatorSettings settings)
+Emulator::Emulator(const std::shared_ptr<ITimer>& timer, EmulatorSettings settings)
     : status_(Stopped)
     , settings_(settings)
     , timer_(timer) {
@@ -49,7 +45,7 @@ void Emulator::removeIoListener(IIoListener& listener) {
     ioListeners_.erase(std::remove(ioListeners_.begin(), ioListeners_.end(), &listener));
 }
 
-void Emulator::loadFile(std::vector<std::uint8_t> loadedFile) noexcept {
+void Emulator::loadFile(const std::vector<std::uint8_t>& loadedFile) noexcept {
     stop();
     this->loadedFile_ = loadedFile;
 
@@ -120,7 +116,7 @@ void Emulator::nextInstruction() {
         const std::uint8_t fetched1 = memory_[PC_];
         const std::uint8_t fetched2 = memory_[PC_+1];
 
-        const std::uint16_t fetched = static_cast<uint16_t>(fetched1 << 8 | fetched2);
+        const auto fetched = static_cast<uint16_t>(fetched1 << 8U | fetched2);
         opcode(fetched);
         gotoNextPC();
 
@@ -223,7 +219,7 @@ void Emulator::nextInstruction() {
             PC(V_[0] + NNN);
             break;
         case 0xC:           // CXNN     Rand    Vx = rand() & NN
-            V(X, (rand() % Emu::Constants::maxRandValue) & NN);
+            V(X, rand() % Emu::Constants::maxRandValue & NN);
             break;
         case 0xD:           // DXYN     Disp    draw(Vx, Vy, N)
             draw(X, Y, N);
@@ -262,10 +258,10 @@ void Emulator::nextInstruction() {
                 case 0xA: { // FX0A     KeyOp   Vx = get_key()
                     bool isKeyPressed = false;
 
-                    for (int keyIdx = 0; keyIdx < Emu::Constants::numberOfKeys; ++keyIdx) {
-                        if (key_[keyIdx]) {
+                    for (bool keyIdx : key_) {
+                        if (keyIdx) {
                             isKeyPressed = true;
-                            V(X, key_[keyIdx]);
+                            V(X, static_cast<uint8_t>(keyIdx));
                             break;
                         }
                     }
@@ -386,7 +382,7 @@ void Emulator::draw(std::uint8_t X, std::uint8_t Y, std::uint8_t N) {
         for (int spriteIdx = 0; spriteIdx < pixelsWide; ++spriteIdx) {
             std::uint8_t xCoord = (V_[X] + spriteIdx) % Emu::Constants::displayCols;
 
-            bool spritePixel = (sprite >> (pixelsWide - 1 - spriteIdx)) & 1;
+            bool spritePixel = (sprite >> (pixelsWide - 1 - spriteIdx)) & 1U;
             bool screenPixel = display_[xCoord][yCoord];
 
             if (screenPixel && spritePixel) {
@@ -403,7 +399,7 @@ void Emulator::draw(std::uint8_t X, std::uint8_t Y, std::uint8_t N) {
     }   
 }
 
-void Emulator::init(std::vector<std::uint8_t> loadedFile) {
+void Emulator::init(const std::vector<std::uint8_t>& loadedFile) {
     clearMemory();
     clearDisplay();
     resetPC();
@@ -413,10 +409,6 @@ void Emulator::init(std::vector<std::uint8_t> loadedFile) {
     clearKeys();
     loadFontsetIntoMemory();
     loadFileIntoMemory(loadedFile);
-}
-
-void Emulator::keyPause() {
-    timer_->stop();
 }
 
 void Emulator::resetPC() {
@@ -454,15 +446,15 @@ void Emulator::clearDisplay() {
 void Emulator::clearRegisters() {
     I(0);
 
-    for (int rIdx = 0; rIdx < Emu::Constants::numberOfRegisters; ++rIdx)
-        V_[rIdx] = 0;
+    for (std::uint8_t & rIdx : V_)
+        rIdx = 0;
 
     notifyDebugListenersAboutVregisters();
 }
 
 void Emulator::clearKeys() {
-    for (int keyIdx = 0; keyIdx < Emu::Constants::numberOfKeys; ++keyIdx)
-        key_[keyIdx] = false;
+    for (bool & keyIdx : key_)
+        keyIdx = false;
 
     notifyDebugListenersAboutKey();
 }
@@ -472,13 +464,13 @@ void Emulator::loadFontsetIntoMemory() {
         memory_[Emu::Constants::fontsetStartAddress + mIdx] = fontset_[mIdx];
 }
 
-void Emulator::loadFileIntoMemory(std::vector<std::uint8_t> loadedFile) {
+void Emulator::loadFileIntoMemory(const std::vector<std::uint8_t>& loadedFile) {
     if (loadedFile.size() > Emu::Constants::programStartAddress + Emu::Constants::maxMemory)
         throw FileTooLargeException(loadedFile.size(), Emu::Constants::programStartAddress + Emu::Constants::maxMemory);
 
     unsigned int address = Emu::Constants::programStartAddress;
-    for (size_t ldIdx = 0; ldIdx < loadedFile.size(); ++ldIdx) {
-        memory_[address] = loadedFile[ldIdx];
+    for (std::uint8_t ldIdx : loadedFile) {
+        memory_[address] = ldIdx;
         ++address;
     }
 }
@@ -499,14 +491,6 @@ EmulatorSettings Emulator::settings() const {
     return settings_;
 }
 
-std::uint8_t Emulator::displayRows() const {
-    return Emu::Constants::displayRows;
-}
-
-std::uint8_t Emulator::displayCols() const {
-    return Emu::Constants::displayCols;
-}
-
 std::uint16_t Emulator::opcode() const {
     return opcode_;
 }
@@ -514,8 +498,8 @@ std::uint16_t Emulator::opcode() const {
 std::vector<std::uint8_t> Emulator::VRegisters() const {
     std::vector<std::uint8_t> vAsVector;
 
-    for (size_t regIdx = 0; regIdx < Emu::Constants::numberOfRegisters; ++regIdx)
-        vAsVector.push_back(V_[regIdx]);
+    for (std::uint8_t regIdx : V_)
+        vAsVector.push_back(regIdx);
 
     return vAsVector;
 }
@@ -543,8 +527,8 @@ std::uint8_t Emulator::soundTimer() const {
 std::vector<bool> Emulator::key() const {
     std::vector<bool> keysAsVector;
 
-    for (size_t keyIdx = 0; keyIdx < Emu::Constants::numberOfKeys; ++keyIdx)
-        keysAsVector.push_back(key_[keyIdx]);
+    for (bool keyIdx : key_)
+        keysAsVector.push_back(keyIdx);
 
     return keysAsVector;
 }
@@ -559,8 +543,8 @@ std::vector<std::vector<bool>> Emulator::display() const {
     for (int rowIdx = 0; rowIdx < Emu::Constants::displayRows; ++rowIdx) {
         std::vector<bool> row;
 
-        for (int colIdx = 0; colIdx < Emu::Constants::displayCols; ++colIdx)
-            row.push_back(display_[colIdx][rowIdx]);
+        for (const auto & colIdx : display_)
+            row.push_back(colIdx[rowIdx]);
 
         displayAsVector.push_back(row);
     }
@@ -574,7 +558,7 @@ void Emulator::emulatorSettings(EmulatorSettings newSettings) {
 }
 
 void Emulator::latestError(std::string latestError) {
-    this->latestError_ = latestError;
+    this->latestError_ = std::move(latestError);
     notifyErrorListeners();
 }
 

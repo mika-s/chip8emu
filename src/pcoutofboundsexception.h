@@ -12,7 +12,7 @@ class PCOutOfBoundsException : public std::runtime_error
 {
 public:
     PCOutOfBoundsException(std::uint16_t PC, std::uint16_t max);
-    const char* what() const noexcept;
+    [[nodiscard]] const char* what() const noexcept override;
 
 private:
     void makeMessage(std::uint16_t PC, std::uint16_t max);
