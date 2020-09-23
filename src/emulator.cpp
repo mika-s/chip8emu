@@ -13,7 +13,13 @@ namespace Emu {
 Emulator::Emulator(const std::shared_ptr<ITimer>& timer, EmulatorSettings settings)
     : status_(Stopped)
     , settings_(settings)
-    , timer_(timer) {
+    , timer_(timer)
+    , opcode_(0), PC_(0), I_(0), delayTimer_(0), soundTimer_(0) {
+
+    std::random_device dev;
+    random = std::mt19937(dev());
+    distribution = std::uniform_int_distribution<int>(0, Constants::maxRandValue);
+
     timer->addTimerListener(*this);
 }
 
@@ -26,7 +32,8 @@ void Emulator::addDebugListener(IDebugListener& listener) {
 }
 
 void Emulator::removeDebugListener(IDebugListener& listener) {
-    debugListeners_.erase(std::remove(debugListeners_.begin(), debugListeners_.end(), &listener));
+    debugListeners_.erase(std::remove(debugListeners_.begin(), debugListeners_.end(), &listener),
+                          debugListeners_.end());
 }
 
 void Emulator::addErrorListener(IErrorListener& listener) {
@@ -34,7 +41,8 @@ void Emulator::addErrorListener(IErrorListener& listener) {
 }
 
 void Emulator::removeErrorListener(IErrorListener& listener) {
-    errorListeners_.erase(std::remove(errorListeners_.begin(), errorListeners_.end(), &listener));
+    errorListeners_.erase(std::remove(errorListeners_.begin(), errorListeners_.end(), &listener),
+                          errorListeners_.end());
 }
 
 void Emulator::addIoListener(IIoListener& listener) {
@@ -42,7 +50,8 @@ void Emulator::addIoListener(IIoListener& listener) {
 }
 
 void Emulator::removeIoListener(IIoListener& listener) {
-    ioListeners_.erase(std::remove(ioListeners_.begin(), ioListeners_.end(), &listener));
+    ioListeners_.erase(std::remove(ioListeners_.begin(), ioListeners_.end(), &listener),
+                       ioListeners_.end());
 }
 
 void Emulator::loadFile(const std::vector<std::uint8_t>& loadedFile) noexcept {
@@ -219,7 +228,7 @@ void Emulator::nextInstruction() {
             PC(V_[0] + NNN);
             break;
         case 0xC:           // CXNN     Rand    Vx = rand() & NN
-            V(X, rand() % Emu::Constants::maxRandValue & NN);
+            V(X, static_cast<uint8_t>(distribution(random)) % Emu::Constants::maxRandValue & NN);
             break;
         case 0xD:           // DXYN     Disp    draw(Vx, Vy, N)
             draw(X, Y, N);
@@ -372,17 +381,17 @@ void Emulator::handleTimers() {
  * Y
  */
 void Emulator::draw(std::uint8_t X, std::uint8_t Y, std::uint8_t N) {
-    const int pixelsWide = 8;
+    const unsigned int pixelsWide = 8;
     V(0xF, 0x0);
 
     for (int rowIdx = 0; rowIdx < N; ++rowIdx) {
         std::uint8_t sprite = memory_[I_+rowIdx];
         std::uint8_t yCoord = (V_[Y] + rowIdx) % Emu::Constants::displayRows;
 
-        for (int spriteIdx = 0; spriteIdx < pixelsWide; ++spriteIdx) {
-            std::uint8_t xCoord = (V_[X] + spriteIdx) % Emu::Constants::displayCols;
+        for (unsigned int spriteIdx = 0; spriteIdx < pixelsWide; ++spriteIdx) {
+            auto xCoord = static_cast<uint8_t>((V_[X] + spriteIdx) % Emu::Constants::displayCols);
 
-            bool spritePixel = (sprite >> (pixelsWide - 1 - spriteIdx)) & 1U;
+            bool spritePixel = static_cast<bool>((sprite >> (pixelsWide - 1U - spriteIdx)) & 1U);
             bool screenPixel = display_[xCoord][yCoord];
 
             if (screenPixel && spritePixel) {
@@ -476,11 +485,13 @@ void Emulator::loadFileIntoMemory(const std::vector<std::uint8_t>& loadedFile) {
 }
 
 void Emulator::decrementDelayTimer() {
-    delayTimer(delayTimer_ - 1);
+    if (delayTimer_ > 0)
+        delayTimer(delayTimer_ - 1);
 }
 
 void Emulator::decrementSoundTimer() {
-    soundTimer(soundTimer_ - 1);
+    if (soundTimer_ > 0)
+        soundTimer(soundTimer_ - 1);
 }
 
 EmulatorStatus Emulator::status() const {

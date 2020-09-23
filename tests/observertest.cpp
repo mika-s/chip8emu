@@ -17,6 +17,8 @@ void ObserverTest::givenDebugListenersShouldNotifyListenersOnRegisterChanges() {
     ListenerMock mock;
     emulator.addDebugListener(mock);
     emulator.loadFile({ 0x71, 0x01 });
+    mock.vRegistersChangedWasCalled = false;
+    emulator.nextInstruction();
 
     QVERIFY(mock.vRegistersChangedWasCalled);
 }
@@ -39,6 +41,26 @@ void ObserverTest::givenIoListenersShouldNotifyListenersOnDraw() {
     emulator.nextInstruction();
 
     QVERIFY(mock.drawWasCalled);
+}
+
+void ObserverTest::givenRemovalFromSubscriptionNotNotified() {
+    Emu::Emulator emulator = Emu::Emulator(timer, settings);
+    ListenerMock mock;
+
+    emulator.addDebugListener(mock);
+    emulator.removeDebugListener(mock);
+    emulator.loadFile({
+        0x71, 0x01,     // V[1] += 01
+        0x71, 0x01      // V[1] += 01
+    });
+    emulator.nextInstruction();
+
+    QVERIFY(!mock.vRegistersChangedWasCalled);
+
+    emulator.addDebugListener(mock);
+    emulator.nextInstruction();
+
+    QVERIFY(mock.vRegistersChangedWasCalled);
 }
 
 void ObserverTest::cleanupTestCase() {

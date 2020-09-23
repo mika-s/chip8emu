@@ -19,6 +19,8 @@ private slots:
     void given_2NNN_callSubroutineAtNNN();
     void given_3XNN_andVXisNNgotoNextPC();
     void given_3XNN_andVXisNotNNdoNotgotoNextPC();
+    void given_4XNN_andVXisNotNNgotoNextPC();
+    void given_4XNN_andVXisNNdoNotgotoNextPC();
 };
 
 #endif // INSTRUCTIONTEST_H

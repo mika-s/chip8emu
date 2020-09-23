@@ -16,11 +16,12 @@ EmulatorTimer::EmulatorTimer(QObject *parent)
 }
 
 void EmulatorTimer::addTimerListener(ITimerListener& listener) {
-    timerListeners.push_back(&listener);
+    timerListeners_.push_back(&listener);
 }
 
 void EmulatorTimer::removeTimerListener(ITimerListener& listener) {
-    timerListeners.erase(std::remove(timerListeners.begin(), timerListeners.end(), &listener));
+    timerListeners_.erase(std::remove(timerListeners_.begin(), timerListeners_.end(), &listener),
+                          timerListeners_.end());
 }
 
 void EmulatorTimer::start(int frequency) {
@@ -32,7 +33,7 @@ void EmulatorTimer::stop() {
 }
 
 void EmulatorTimer::notifyOfTick() {
-    for (ITimerListener* listener : timerListeners) listener->tick();
+    for (ITimerListener* listener : timerListeners_) listener->tick();
 }
 
 void EmulatorTimer::changeFrequency(int frequency) {

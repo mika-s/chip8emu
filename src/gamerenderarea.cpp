@@ -1,6 +1,4 @@
 #include "gamerenderarea.h"
-
-#include <utility>
 #include "emulator.h"
 
 

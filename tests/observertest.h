@@ -18,6 +18,7 @@ private slots:
     void givenDebugListenersShouldNotifyListenersOnRegisterChanges();
     void givenErrorListenersShouldNotifyListenersOnLatestErrorChanges();
     void givenIoListenersShouldNotifyListenersOnDraw();
+    void givenRemovalFromSubscriptionNotNotified();
     void cleanupTestCase();
 };
 

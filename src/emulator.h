@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <random>
 #include <stack>
 #include <string>
 #include <thread>
@@ -72,6 +73,8 @@ private:
     EmulatorStatus status_;
     EmulatorSettings settings_;
     std::shared_ptr<ITimer> timer_;
+    std::mt19937 random;
+    std::uniform_int_distribution<int> distribution;
     std::string latestError_;
     std::vector<std::uint8_t> loadedFile_;
 

@@ -21,7 +21,7 @@ public:
     void removeTimerListener(ITimerListener& listener) override;
 
 private:
-    std::vector<ITimerListener*> timerListeners;
+    std::vector<ITimerListener*> timerListeners_;
 };
 
 }
